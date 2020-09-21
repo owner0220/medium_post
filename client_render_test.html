@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<style>
+    body {
+        font-family: 'Open Sans', sans-serif;
+    }
+    .image_div {overflow: hidden; width:100%; height:100%; 
+    }
+
+    img {
+        height: 100%;
+    }
+    
+    li {
+        word-wrap : break-word;
+    }
+
+    .post_c{
+        overflow:hidden; height:400px;
+    }
+</style>
+
+<body>
+
+    <div class="container">
+        <h1><b>Penta Times</b></h1>
+        <div class="row">
+
+
+        </div>
+    </div>
+
+    <script>
+        $.ajax({
+        url: 'https://api.rss2json.com/v1/api.json',
+        method: 'GET',
+        dataType: 'json',
+        data: {
+            rss_url: 'https://towardsdatascience.com/feed',
+        }
+    }).done(function (response) {
+        if(response.status != 'ok'){ throw response.message; }
+
+        console.log('====== ' + response.feed.title + ' ======');
+        console.log(response.items)
+        for(var i in response.items){
+            var item = response.items[i];
+
+            var post = document.createElement('div');
+            var content_ul = document.createElement('ul');
+
+            var title_link = document.createElement('a');
+            var image_div = document.createElement('div');
+            var image = document.createElement('img');
+            var content_title = document.createElement('h5');
+            
+            
+            post.setAttribute("class","col-12 col-sm-6 col-md-4 post_c");
+            image_div.setAttribute("class","image_div");
+            title_link.setAttribute("href",item.link);
+            image.setAttribute("src", item.thumbnail);
+            content_title.setAttribute("class","card-header");
+            
+
+            item.categories.forEach(element => {
+                var content_li = document.createElement('li');
+                content_li.append(element);
+                content_ul.append(content_li);
+            });
+            
+            image_div.append(image);
+            
+            content_title.append(item.title);
+            title_link.append(content_title);
+            post.append(title_link);
+        
+            post.append(content_ul);
+            post.append(image_div);
+            $('.row').append(post);
+            console.log(item.title);
+            
+        }
+    });
+    </script>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+        integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
