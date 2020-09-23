@@ -56,47 +56,28 @@
         }).done(function (response) {
             if (response.status != 'ok') { throw response.message; }
             var feedsite = document.createElement('div');
-            feedsite.setAttribute("class","col-12 col-md-12");
-            feedsite.append('============ ' + response.feed.title + ' ============');
+            var feedheader = document.createElement('h5');
+            feedheader.setAttribute("class","alert alert-dark");
+            feedsite.setAttribute("class","col-12 col-sm-6 col-md-4 post_c");
+            feedsite.setAttribute("style","overflow:scroll;");
+            feedsite.append(feedheader);
+            
+            feedheader.append(response.feed.title);
 
-            $('.row').append(feedsite);
-
-            console.log('====== ' + response.feed.title + ' ======');
-            console.log(response.items)
+        
             for (var i in response.items) {
                 var item = response.items[i];
 
-                var post = document.createElement('div');
-                var content_ul = document.createElement('ul');
-
                 var title_link = document.createElement('a');
-                var image_div = document.createElement('div');
-                var image = document.createElement('img');
                 var content_title = document.createElement('h5');
-
-
-                post.setAttribute("class", "col-12 col-sm-6 col-md-4 post_c");
-                image_div.setAttribute("class", "image_div");
                 title_link.setAttribute("href", item.link);
-                image.setAttribute("src", item.thumbnail);
                 content_title.setAttribute("class", "card-header");
-
-
-                item.categories.forEach(element => {
-                    var content_li = document.createElement('li');
-                    content_li.append(element);
-                    content_ul.append(content_li);
-                });
-
-                image_div.append(image);
-
                 content_title.append(item.title);
                 title_link.append(content_title);
-                post.append(title_link);
+                
+                feedsite.append(title_link);
+                $('.row').append(feedsite);
 
-                post.append(content_ul);
-                post.append(image_div);
-                $('.row').append(post);
                 console.log(item.title);
 
             }
@@ -114,47 +95,28 @@
         }).done(function (response) {
             if (response.status != 'ok') { throw response.message; }
             var feedsite = document.createElement('div');
-            feedsite.setAttribute("class","col-12 col-md-12");
-            feedsite.append('============ ' + response.feed.title + ' ============');
+            var feedheader = document.createElement('h5');
+            feedheader.setAttribute("class","alert alert-dark");
+            feedsite.setAttribute("class","col-12 col-sm-6 col-md-4 post_c");
+            feedsite.setAttribute("style","overflow:scroll;");
+            feedsite.append(feedheader);
+            
+            feedheader.append(response.feed.title);
 
-            $('.row').append(feedsite);
-
-            console.log('====== ' + response.feed.title + ' ======');
-            console.log(response.items)
+        
             for (var i in response.items) {
                 var item = response.items[i];
 
-                var post = document.createElement('div');
-                var content_ul = document.createElement('ul');
-
                 var title_link = document.createElement('a');
-                var image_div = document.createElement('div');
-                var image = document.createElement('img');
                 var content_title = document.createElement('h5');
-
-
-                post.setAttribute("class", "col-12 col-sm-6 col-md-4 post_c");
-                image_div.setAttribute("class", "image_div");
                 title_link.setAttribute("href", item.link);
-                image.setAttribute("src", item.thumbnail);
                 content_title.setAttribute("class", "card-header");
-
-
-                item.categories.forEach(element => {
-                    var content_li = document.createElement('li');
-                    content_li.append(element);
-                    content_ul.append(content_li);
-                });
-
-                image_div.append(image);
-
                 content_title.append(item.title);
                 title_link.append(content_title);
-                post.append(title_link);
+                
+                feedsite.append(title_link);
+                $('.row').append(feedsite);
 
-                post.append(content_ul);
-                post.append(image_div);
-                $('.row').append(post);
                 console.log(item.title);
 
             }
@@ -172,47 +134,28 @@
         }).done(function (response) {
             if (response.status != 'ok') { throw response.message; }
             var feedsite = document.createElement('div');
-            feedsite.setAttribute("class","col-12 col-md-12");
-            feedsite.append('============ ' + response.feed.title + ' ============');
+            var feedheader = document.createElement('h5');
+            feedheader.setAttribute("class","alert alert-dark");
+            feedsite.setAttribute("class","col-12 col-sm-6 col-md-4 post_c");
+            feedsite.setAttribute("style","overflow:scroll;");
+            feedsite.append(feedheader);
+            
+            feedheader.append(response.feed.title);
 
-            $('.row').append(feedsite);
-
-            console.log('====== ' + response.feed.title + ' ======');
-            console.log(response.items)
+        
             for (var i in response.items) {
                 var item = response.items[i];
 
-                var post = document.createElement('div');
-                var content_ul = document.createElement('ul');
-
                 var title_link = document.createElement('a');
-                var image_div = document.createElement('div');
-                var image = document.createElement('img');
                 var content_title = document.createElement('h5');
-
-
-                post.setAttribute("class", "col-12 col-sm-6 col-md-4 post_c");
-                image_div.setAttribute("class", "image_div");
                 title_link.setAttribute("href", item.link);
-                image.setAttribute("src", item.thumbnail);
                 content_title.setAttribute("class", "card-header");
-
-
-                item.categories.forEach(element => {
-                    var content_li = document.createElement('li');
-                    content_li.append(element);
-                    content_ul.append(content_li);
-                });
-
-                image_div.append(image);
-
                 content_title.append(item.title);
                 title_link.append(content_title);
-                post.append(title_link);
+                
+                feedsite.append(title_link);
+                $('.row').append(feedsite);
 
-                post.append(content_ul);
-                post.append(image_div);
-                $('.row').append(post);
                 console.log(item.title);
 
             }
